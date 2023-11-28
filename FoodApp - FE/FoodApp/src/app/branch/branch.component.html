@@ -1,0 +1,52 @@
+<!-- branch-creation.component.html -->
+
+<div class="branch-creation-page">
+    <br />
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-center">
+                    <h1>Create Branch!</h1>
+                </div>
+
+                <form #editForm="ngForm" (ngSubmit)="OnSubmit(editForm)">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name of the Branch</label>
+                        <input type="text" class="form-control" id="name" name="name" #name="ngModel" ngModel required />
+                        <span *ngIf="name.touched && name.invalid" style="color: red">Invalid Name</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="address" name="address" #address="ngModel" ngModel required />
+                        <span *ngIf="address.touched && address.invalid" style="color: red">Invalid Address</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="text" class="form-control" id="email" name="email" #email="ngModel" ngModel required />
+                        <span *ngIf="email.touched && email.invalid" style="color: red">Invalid Email</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phoneNumber" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" #phoneNumber="ngModel" ngModel pattern="^\d{10}$" required />
+                        <span *ngIf="phoneNumber.touched && phoneNumber.invalid" style="color: red">Invalid Phone Number</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="branchManager" class="form-label">Branch Manager</label>
+                        <select class="form-select" id="branchManager" name="branchManager" #branchManager="ngModel" ngModel required>
+                            <option value="" disabled selected>Select a Branch Manager</option>
+                            <!-- Use ngFor to iterate through the managers and populate the options -->
+                            <option *ngFor="let manager of managers" [value]="manager.id">{{ manager.name }}</option>
+                        </select>
+                        <span *ngIf="branchManager.touched && branchManager.invalid" style="color: red">Please select a Branch Manager</span>
+                    </div>
+
+                    <button [disabled]="!editForm.valid" type="submit" class="btn btn-primary btn-lg" style="width: 100%">Create Branch</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<!-- admin.component.html -->
+
+<div class="admin-page">
+    <header class="header">
+        <h1>Admin Dashboard</h1>
+        <nav>
+            <button routerLink="/register">Create Manager</button>&nbsp;&nbsp;
+            <button routerLink="/branch">Create Branch</button>&nbsp;&nbsp;
+            <button (click)="logout()">Logout</button>
+        </nav>
+    </header>
+
+    <!-- Display the branches in a table -->
+    <span><h4>All Managers</h4></span>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Branch</th>
+                <th>Banch Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Use *ngFor to iterate through allBranches and display each branch -->
+            <tr *ngFor="let p of allBranches">
+                <td>{{ p.user.name }}</td>
+                <td>{{ p.user.email }}</td>
+                <td>{{ p.user.role }}</td>
+                <td>{{ p.name}}</td>
+                <td>{{ p.address}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

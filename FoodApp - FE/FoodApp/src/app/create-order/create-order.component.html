@@ -1,0 +1,82 @@
+<div class="registerPage">
+  <div class="background-container" style="background-color: #f0f0f0; width: 100%; height: 100vh;"> <!-- Set your desired background color here -->
+    <div class="container form-container">
+      <h1 class="text-center">Place Order</h1>
+      <form #newOrder="ngForm" (ngSubmit)="addNewOrder(newOrder)">
+        <div class="form-group">
+          <label for="customerName">Name</label>
+          <input
+            name="customerName"
+            #customerName="ngModel"
+            ngModel
+            type="name"
+            id="customerName"
+            class="form-control"
+            placeholder="Full Name"
+            required
+          />
+          <span 
+            *ngIf="customerName.invalid && customerName.touched"
+            class="error-message"
+            style="color: red;"
+          >Name is Invalid</span>
+        </div>
+
+        <div class="form-group">
+          <label for="contactNumber">Contact Number</label>
+          <input
+            name="contactNumber"
+            #contactNumber="ngModel"
+            ngModel
+            type="tel"
+            id="contactNumber"
+            class="form-control"
+            placeholder="Contact Number"
+            required
+            pattern="^\d{10}$"
+          />
+          <span
+            *ngIf="contactNumber.invalid && contactNumber.touched"
+            class="error-message"
+            style="color: red;"
+          >Contact is Invalid</span>
+        </div>
+
+        <p class="menu-label">Choose From Menu:</p>
+
+        <div class="list-group foodproduct" *ngFor="let f of allFoodProducts">
+          <a class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <p class="mb-1">{{ f.name }}</p>
+              <p class="mb-1" style="text-align: left;">{{ f.type }}</p>
+              <small>&#8377; {{ f.price }}</small>
+              <div class="quantity-controls">
+                <button
+                  type="button"
+                  class="quantity-inp"
+                  (click)="addNewItem(f.id, f.price)"
+                >+</button>
+                <span class="item-count">
+                  {{ itemCountMap.get(f.id) || 0 }}
+                </span>
+                <button
+                  type="button"
+                  class="quantity-inp"
+                  (click)="removeItem(f.id, f.price)"
+                >-</button>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <h2 class="total-price">Total price: <span id="totalPriceValue">{{ totalOrderPrice }}</span></h2>
+
+        <button
+          class="btn btn-secondary btn-block"
+          type="submit"
+          [disabled]="!newOrder.valid"
+        >Place Order</button>
+      </form>
+    </div>
+  </div>
+</div>

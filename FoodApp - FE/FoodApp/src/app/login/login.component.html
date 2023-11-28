@@ -1,0 +1,51 @@
+<!-- login.component.html -->
+
+<div class="login-page">
+  <section class="login-section">
+      <div class="login-container">
+          <div class="login-card">
+              <h1 class="login-title">Access Your Account</h1>
+              <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+                  <div class="form-group">
+                      <label for="email" class="login-label">Email</label>
+                      <input
+                          name="email"
+                          #email="ngModel"
+                          ngModel
+                          type="email"
+                          class="form-control"
+                          id="inputEmail"
+                          placeholder="Enter your email address"
+                          pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
+                          required
+                      />
+                      <span *ngIf="email.invalid && email.touched" class="error-text">Invalid email</span>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="password" class="login-label">Password</label>
+                      <input
+                          name="password"
+                          #password="ngModel"
+                          ngModel
+                          type="password"
+                          class="form-control"
+                          id="inputPassword"
+                          placeholder="Enter your password"
+                          required
+                      />
+                      <span *ngIf="password.invalid && password.touched" class="error-text">Password required</span>
+                  </div>
+
+                  <button
+                      type="submit"
+                      class="btn login-btn"
+                      [disabled]="!loginForm.valid"
+                  >
+                      Log In
+                  </button>
+              </form>
+          </div>
+      </div>
+  </section>
+</div>

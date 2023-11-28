@@ -1,0 +1,40 @@
+<!-- registration.component.html -->
+
+<div class="register-page">
+  <section class="h-100">
+      <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col-lg-6">
+                  <div class="card mt-5">
+                      <div class="card-body p-4">
+                          <h3 class="mb-4 text-center">Get Started With Registration</h3>
+                          <form #regForm="ngForm" (ngSubmit)="register(regForm)">
+                              <div class="mb-3">
+                                  <input name="name" #name="ngModel" ngModel type="text" class="form-control" id="inputName" placeholder="Your Name" required />
+                                  <span *ngIf="name.invalid && name.touched" class="text-danger">Name is required</span>
+                              </div>
+                              <div class="mb-3">
+                                  <input name="email" #email="ngModel" ngModel type="email" class="form-control" id="inputEmail" placeholder="Your Email" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" required />
+                                  <span *ngIf="email.invalid && email.touched" class="text-danger">Invalid email address</span>
+                              </div>
+                              <div class="mb-3">
+                                  <input name="password" #password="ngModel" ngModel type="password" class="form-control" id="inputPassword" placeholder="Create a Password" minlength="6" required />
+                                  <span *ngIf="password.invalid && password.touched" class="text-danger">Password is required (Min 6 characters)</span>
+                              </div>
+                              <button type="submit" class="btn btn-primary btn-block" [disabled]="!regForm.valid">Join Now</button>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <footer>
+      <div class="footer-content">
+          <a class="brand" href="#">
+              Hot<span class="brand-accent">Bite</span>
+          </a>
+          <p>&copy; 2023 HotBite. All rights reserved.</p>
+      </div>
+  </footer>
+</div>

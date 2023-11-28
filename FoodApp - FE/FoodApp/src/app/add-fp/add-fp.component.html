@@ -1,0 +1,46 @@
+<div class="registerPage" style="width: 100%; height: 703px; background: linear-gradient(rgba(173, 216, 230, 0.8), rgba(173, 216, 230, 0.8)), url(https://example.com/new-background-image.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;">
+  <br /><br />
+
+  <div class="container mt-4 custom-form" style="width: 50%; background-color: rgba(173, 216, 230, 0.5); padding: 20px;">
+    <div style="text-align: center; color: white" class="container">
+      <h1>Add Food Product</h1>
+    </div>
+    <br />
+
+    <div class="container" style="color: white">
+      <form #regForm="ngForm" (ngSubmit)="OnSubmit(regForm)">
+        <div class="mb-4">
+          <label for="product" class="form-label">Name of the Food Product</label>
+          <input type="text" class="form-control custom-input" placeholder="Enter the name of the Food Product" id="name" name="name" #name="ngModel" ngModel required />
+          <span *ngIf="name.touched && name.invalid" style="color: red">Please fill out this field</span>
+        </div>
+        <div class="mb-4">
+          <label for="type" class="form-label">Type of the Food Product </label>
+          <input type="text" placeholder="Enter the type of the Food Product" class="form-control custom-input" id="type" name="type" #type="ngModel" ngModel required />
+          <span *ngIf="type.touched && type.invalid" style="color: red">Please fill out this field</span>
+        </div>
+        <div class="mb-4">
+          <label for="about" class="form-label">About the Food Product </label>
+          <input type="text" placeholder="Enter details about the Food Product" class="form-control custom-input" id="about" name="about" #about="ngModel" ngModel required />
+          <span *ngIf="about.touched && about.invalid" style="color: red">Please fill out this field</span>
+        </div>
+        <div class="mb-4">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="false" id="flexCheckDefault" checked name="availability" #availability="ngModel" ngModel />
+            <label class="form-check-label" for="flexCheckDefault">Is available?</label>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label for="price" class="form-label">Price of the Food Product</label>
+          <input type="number" class="form-control custom-input" placeholder="Enter the price of the Food Product" id="price" name="price" #price="ngModel" ngModel required />
+          <span *ngIf="price.touched && price.invalid" style="color: red">Please fill out this field</span>
+        </div>
+        <div style="text-align: center">
+          <button [disabled]="!regForm.valid" type="submit" class="btn btn-light btn-lg custom-button" style="width: 50%; position: relative;">
+            Add the Food Product
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

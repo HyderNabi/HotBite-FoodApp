@@ -1,0 +1,60 @@
+<!-- manager-dashboard.component.html -->
+
+<div class="admin-page">
+  <header class="header">
+      <h1>Manager Dashboard</h1>
+      <nav>
+          <button type="button" class="btn btn-light" [routerLink]="['/showStaff']">Access Staff</button>
+          <button type="button" class="btn btn-light" [routerLink]="['/addStaff']">Add Staff</button>
+          <button type="button" class="btn btn-light" [routerLink]="['/add-fp']">Add Products To Menu</button>
+          <button type="button" class="btn btn-light" (click)="logout()">Logout</button>
+      </nav>
+  </header>
+
+  <div class="details-container">
+      <div class="manager-details">
+          <h4>Manager : {{ manager.name }}</h4>
+          <h4>Manager Email : {{ manager.email }}</h4>
+      </div>
+
+      <div class="branch-details">
+          <h4>Branch Name : {{ allBranches.name }}</h4>
+          <h4>Branch Address : {{ allBranches.address }}</h4>
+          <h4>Branch Contact : {{ allBranches.phoneNumber }}</h4>
+          <h4>Branch Email : {{ allBranches.email }}</h4>
+      </div>
+  </div>
+
+  <span><h4>Menu</h4></span>
+  <table class="table">
+      <thead>
+          <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Availability</th>
+              <th>About</th>
+              <th>Price</th>
+              <th>Edit Product</th>
+              <th>Delete Product</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let r of result.data.foodProducts">
+              <td>{{ r.id }}</td>
+              <td>{{ r.name }}</td>
+              <td>{{ r.type }}</td>
+              <td>{{ r.availability ? "yes" : "no" }}</td>
+              <td>{{ r.about }}</td>
+              <td>{{ r.price }}</td>
+              <td>
+                  <button type="button" class="btn btn-secondary" [routerLink]="['/edit-fp/', r.id]">Edit</button>
+              </td>
+              <td>
+                  <button type="button" class="btn btn-secondary" (click)="deletefp(r.id)">Delete</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+  <h2 style="color: red" *ngIf="menuFlag">Menu is empty<br /></h2>
+</div>

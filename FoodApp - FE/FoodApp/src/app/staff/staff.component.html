@@ -1,0 +1,71 @@
+<!-- Staff-dashboard.component.html -->
+
+<div class="admin-page">
+  <header class="header">
+    <h1>Staff Dashboard</h1>
+    <nav>
+      <button type="button" class="btn btn-light" [routerLink]="['/create-order']">Create Order</button>
+      <button type="button" class="btn btn-light" (click)="logout()">Logout</button>
+    </nav>
+  </header>
+
+  <div class="details-container">
+    <div class="manager-details">
+      <h4>Staff Member: {{ staff.name }}</h4>
+      <h4>Staff Email: {{ staff.email }}</h4>
+      <h4>Manager: {{ staff.manager.name }}</h4>
+      <h4>Manager Email: {{ staff.manager.email }}</h4>
+    </div>
+
+    <div class="branch-details">
+      <h4>Branch Name: {{ allBranches.name }}</h4>
+      <h4>Branch Address: {{ allBranches.address }}</h4>
+      <h4>Branch Contact: {{ allBranches.phoneNumber }}</h4>
+      <h4>Branch Email: {{ allBranches.email }}</h4>
+    </div>
+  </div>
+
+  <span><h4>Orders</h4></span>
+  <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Customer Name</th>
+          <th>Contact Number</th>
+          <th>Total Amount</th>
+          <th>Created At</th>
+          <th>Delivered At</th>
+          <th>Status</th>
+          <th>Bill</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let fo of allOrders.data | filter: searchOrder">
+          <td>{{ fo.customerName }}</td>
+          <td>{{ fo.contactNumber }}</td>
+          <td>{{ fo.totalPrice }}</td>
+          <td>{{ fo.orderCreatedTime }}</td>
+          <td>{{ fo.orderDeliveryTime }}</td>
+          <td>
+            <select class="form-control" id="inputSelect" name="status" [(ngModel)]="fo.status" (ngModelChange)="changeStatus($event, fo.id)" [disabled]="fo.status === 'delivered'">
+              <option value="confirmed">Confirmed</option>
+              <option value="delivered">Delivered</option>
+              <option value="process">In Process</option>
+            </select>
+          </td>
+          <td>
+            <button class="btn btn-secondary" [routerLink]="['/bill/', fo.id]">Bill</button>
+          </td>
+          <td>
+            <button class="btn btn-secondary" [routerLink]="['/edit-order/', fo.id]" [disabled]="fo.status === 'delivered'">Edit</button>
+          </td>
+          <td>
+            <button class="btn btn-secondary" (click)="deleteFoodOrder(fo.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

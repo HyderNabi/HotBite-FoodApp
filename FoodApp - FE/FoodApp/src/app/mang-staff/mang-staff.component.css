@@ -1,0 +1,88 @@
+/* Add this to your global styles or component-specific styles */
+
+.admin-page {
+    padding: 20px;
+    background-color: #f5f5f5; /* Updated page background color */
+    min-height: 100vh; /* Set minimum height to cover the entire viewport */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3498db;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    color: #ffffff;
+    font-size: 24px;
+}
+
+nav button {
+    margin-left: 10px;
+}
+
+.details-container {
+    display: flex;
+    margin-top: 20px;
+}
+
+.manager-details,
+.branch-details {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff; /* Updated background color */
+    border-radius: 5px;
+    margin-right: 20px;
+    color: #333333; /* Updated text color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Added box shadow for depth */
+}
+
+.manager-details h4,
+.branch-details h4 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: #ffffff; /* Updated table background color */
+    border-radius: 5px;
+    overflow: hidden; /* Hide the border-radius overflow */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Added box shadow for depth */
+}
+
+.table th,
+.table td {
+    text-align: left;
+    padding: 15px;
+    border-bottom: 1px solid #ecf0f1; /* Updated border color */
+}
+
+.table th {
+    background-color: #3498db;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.btn-light {
+    background-color: #3498db;
+    color: #ffffff;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-light:hover {
+    background-color: #2980b9;
+}
+
+.menu-empty-message {
+    color: #e74c3c;
+    margin-top: 20px;
+    font-size: 20px;
+}

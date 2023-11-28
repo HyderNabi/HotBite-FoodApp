@@ -1,0 +1,108 @@
+<div
+  class="registerPage"
+  style="
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(23, 9, 9, 0.881), rgba(12, 8, 8, 0.872)),
+      url(https://img.freepik.com/free-photo/human-resources-concept-with-man_23-2150389111.jpg?w=900&t=st=1694584899~exp=1694585499~hmac=92976675c3e69f45c351dd72b858b994a43fb503e71bcfa7c56a2659bc695b50);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  "
+>
+  <br />
+ 
+  <div
+    class="container"
+    style="
+      background: linear-gradient(rgba(63, 62, 62, 0.5), rgba(106, 104, 104, 0.534));
+      padding-bottom: 20px;
+      padding-top: 20px;
+      width: 50%;
+      color: white;
+      background-color: rgba(20, 18, 18, 0.128);
+      margin-top: 70px;
+    "
+  >
+    <div style="text-align: center" class="container">
+      <h1>UPDATE STAFF</h1>
+      <!-- <img
+        src="https://img.freepik.com/free-photo/human-resources-concept-with-hand_23-2150389105.jpg?w=1060&t=st=1694584952~exp=1694585552~hmac=0390892025ba2ce59fae3d60a52c2adde025f988b5653d485ae4f3a6000002cc"
+        alt="Logo can't be loaded"
+        height="200px"
+      /> -->
+    </div>
+ 
+    <div class="container">
+      <form #editForm="ngForm" (ngSubmit)="OnSubmit(editForm)">
+        <div class="mb-3">
+          <label for="product" class="form-label">Id </label>
+          <input
+            type="text"
+            class="form-control"
+            id="id"
+            name="id"
+            #id="ngModel"
+            [(ngModel)]="selectedStaff.id"
+            readonly
+            disabled
+          />
+        </div>
+        <div class="mb-3">
+          <label for="product" class="form-label">Name </label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            #name="ngModel"
+            [(ngModel)]="selectedStaff.name"
+            required
+          />
+          <span *ngIf="name.touched && name.invalid" style="color: red"
+            >Please fill out this field</span
+          >
+        </div>
+        <div class="mb-3">
+          <label for="type" class="form-label">Email </label>
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            name="email"
+            #email="ngModel"
+            [(ngModel)]="selectedStaff.email"
+            required
+          />
+          <span *ngIf="email.touched && email.invalid" style="color: red"
+            >Please fill out this field</span
+          >
+        </div>
+        <div class="mb-3">
+          <label for="price" class="form-label">Password </label>
+          <input
+            type="text"
+            class="form-control"
+            id="password"
+            name="password"
+            #password="ngModel"
+            [(ngModel)]="selectedStaff.password"
+            required
+            
+          />
+          <span *ngIf="password.touched && password.invalid" style="color: red"
+            >Please fill out this field</span
+          >
+        </div>
+        <button
+          [disabled]="!editForm.valid"
+          type="submit"
+          class="btn btn-secondary btn-lg"
+          style="width: 50%; position: relative;left: 25%;"
+        >
+          Update the Staff Details
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
